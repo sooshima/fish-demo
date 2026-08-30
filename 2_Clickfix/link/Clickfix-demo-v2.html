@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>体験デモ - 安全検証</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; max-width: 450px; }
+        .logo { width: 80px; margin-bottom: 20px; }
+        h1 { font-size: 20px; color: #333; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; line-height: 1.5; }
+        .error-icon { font-size: 48px; color: #ea4335; margin-bottom: 10px; }
+        .step-box { background: #f1f3f4; border: 1px solid #dadce0; padding: 15px; border-radius: 5px; margin: 20px 0; text-align: left; font-size: 14px; }
+        .btn { background-color: #1a73e8; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px; margin-top: 10px; }
+        .btn:hover { background-color: #1557b0; }
+        .footer { margin-top: 20px; font-size: 12px; color: #999; }
+        /* 画面切替用の表示制御 */
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- STEP 1: 誘導画面（偽のエラー・ダウンロード失敗通知） -->
+    <div id="step1">
+        <div class="error-icon">??</div>
+        <h1>ドキュメントの読み込みに失敗しました</h1>
+        <p>要求されたページを表示できませんでした。アクセスを完了するには、ロボットではないことの確認（人間認証）が必要です。</p>
+        
+        <button class="btn" onclick="goToStep2()">「次へ」進んで人間認証を行う</button>
+
+        <div class="footer">
+            ※体験型セキュリティ研修用デモ画面です
+        </div>
+    </div>
+
+    <!-- STEP 2: Clickfix 攻撃画面 -->
+    <div id="step2" class="hidden">
+        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="logo">
+        <h1>安全な接続を確認しています</h1>
+        <p>あなたがロボットではないことを確認するために、以下の手順を完了してください。</p>
+
+        <div class="step-box">
+            <strong>手順:</strong><br>
+            1. 下の「修復コードをコピー」ボタンをクリック。<br>
+            2. <b>Win + R</b> を押し、続いて <b>Ctrl + V</b> を押す。<br>
+            3. <b>OK</b> ボタンをクリック。
+        </div>
+
+        <button class="btn" onclick="copyAttackCode()">修復コードをコピーして検証を開始</button>
+
+        <div class="footer">
+            ? 2026 reCAPTCHA - Privacy - Terms
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Step1 から Step2 へ画面を切り替える関数
+    function goToStep2() {
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+    }
+
+    // Defenderに検知されない安全なcmdコマンドをクリップボードにコピー
+    function copyAttackCode() {
+        // cmd.exe のメッセージ表示（PowerShell不使用で安全）
+        const command = 'cmd /k "echo -------------------------------------------------- && echo 【警告】Clickfix攻撃のデモです。本来ならここでマルウェアが実行されます！ && echo -------------------------------------------------- && echo 認証成功 ++++++✓私はロボットではありません:reCAPTCHA ID:8ed-38"';
+        
+        navigator.clipboard.writeText(command).then(() => {
+            alert("コードをコピーしました。\nWin + R キーを押して「名前」欄に Ctrl + V で貼り付け、Enter を押してください。");
+        }).catch(err => {
+            alert("クリップボードへのコピーに失敗しました。");
+        });
+    }
+</script>
+
+</body>
+</html>
