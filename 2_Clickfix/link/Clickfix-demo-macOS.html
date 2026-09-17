@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <!-- STEP 2: Clickfix 攻撃画面 -->
+    <!-- STEP 2: ClickFix 攻撃画面（macOS版） -->
     <div id="step2" class="hidden">
         <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="logo">
         <h1>安全な接続を確認しています</h1>
@@ -44,8 +44,9 @@
         <div class="step-box">
             <strong>手順:</strong><br>
             1. 下の「修復コードをコピー」ボタンをクリック。<br>
-            2. <b>Win + R</b> を押し、続いて <b>Ctrl + V</b> を押す。<br>
-            3. <b>OK</b> ボタンをクリック。
+            2. <b>⌘ Command + Space</b> を押して「ターミナル」または「terminal」と入力。
+            3. ターミナル(アプリ)を起動した後、<b>⌘ Command + V</b> を押す。<br>
+            3. <b>Return</b> キーを押す。
         </div>
 
         <button class="btn" onclick="copyAttackCode()">修復コードをコピーして検証を開始</button>
@@ -66,11 +67,11 @@
 
     // Defenderに検知されない安全なcmdコマンドをクリップボードにコピー
     function copyAttackCode() {
-        // cmd.exe のメッセージ表示（PowerShell不使用で安全）
-        const command = 'cmd /k "echo -------------------------------------------------- && echo 【警告】Clickfix攻撃のデモです。本来ならここでマルウェアが実行されます！ && echo -------------------------------------------------- && echo 認証成功 ++++++✓私はロボットではありません:reCAPTCHA ID:8ed-38"';
+        // macOSのターミナルで安全なメッセージを表示
+        const command = "echo '--------------------------------------------------'; echo '【警告】ClickFix攻撃のデモです。本来ならここでマルウェアが実行されます！'; echo '--------------------------------------------------'; echo '認証成功 ++++++✓私はロボットではありません:reCAPTCHA ID:8ed-38';";
         
         navigator.clipboard.writeText(command).then(() => {
-            alert("コードをコピーしました。\nWin + R キーを押して「名前」欄に Ctrl + V で貼り付け、Enter を押してください。");
+            alert("コードをコピーしました。\n⌘ Command + Space で「ターミナル」を起動し、⌘ Command + V で貼り付けて、Return を押してください。");
         }).catch(err => {
             alert("クリップボードへのコピーに失敗しました。");
         });

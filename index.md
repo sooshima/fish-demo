@@ -29,5 +29,6 @@ SNS等での拡散や、悪性サイトとして通報するようなことは�
 
 あなたは、動画サイトが本来許可していない方法で掲載動画をMP4に変換＆ダウンロードしようと考えているイケナイ人だとします。検索で見つけたこちらの動画変換サイトにアクセスしてみましょう。
 
-<a href="2_Clickfix/usotube_convert.html" target="_blank">⇒ （偽）動画変換サイト</a>
+<a href="2_Clickfix/usotube_convert.html" target="_blank">⇒ （偽）動画変換サイト Windows用</a>
 
+<a href="2_Clickfix/usotube_convert_forMac.html" target="_blank">⇒ （偽）動画変換サイト MacOS用</a>

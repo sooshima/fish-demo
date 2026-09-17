@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usotube - Usotube MP4 Converter</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Arial, "Noto Sans JP", sans-serif;
+    background: #f6f7f9;
+    color: #222;
+  }
+  header {
+    height: 64px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+  }
+  .logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #d92323;
+    letter-spacing: -1px;
+  }
+  .logo span { color: #333; }
+  .nav {
+    margin-left: auto;
+    color: #666;
+    font-size: 14px;
+  }
+  main {
+    max-width: 900px;
+    margin: 55px auto;
+    padding: 0 20px;
+  }
+  .hero {
+    text-align: center;
+  }
+  h1 {
+    font-size: 38px;
+    margin: 0 0 12px;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 17px;
+    margin-bottom: 34px;
+  }
+  .converter {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 34px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.06);
+  }
+  label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 9px;
+  }
+  .row {
+    display: flex;
+    gap: 10px;
+  }
+  input {
+    flex: 1;
+    height: 50px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    padding: 0 14px;
+    font-size: 15px;
+  }
+  button {
+    height: 50px;
+    padding: 0 27px;
+    border: 0;
+    border-radius: 5px;
+    background: #d92323;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button:hover { background: #b91c1c; }
+  .formats {
+    margin-top: 22px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: #666;
+    font-size: 14px;
+  }
+  select {
+    height: 38px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 0 10px;
+  }
+  .notice {
+    margin-top: 25px;
+    background: #f2f5f8;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+  }
+  footer {
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+    margin-top: 55px;
+  }
+  @media (max-width: 650px) {
+    .row { flex-direction: column; }
+    button { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Uso<span>tube</span></div>
+  <div class="nav">Video Converter &nbsp;|&nbsp; Help</div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Usotube動画をMP4に変換</h1>
+    <p class="subtitle">動画URLを入力するだけ。無料でMP4に変換できます。</p>
+  </section>
+
+  <section class="converter">
+    <label for="url">Usotube動画URL</label>
+    <div class="row">
+      <input id="url" type="url"
+             placeholder="https://www.Usotube.com/watch?v=xxxxxxxxxxx"
+             autocomplete="off">
+      <button id="convert">MP4に変換</button>
+    </div>
+
+    <div class="formats">
+      <span>出力形式：</span>
+      <select id="format">
+        <option>MP4 - 1080p</option>
+        <option>MP4 - 720p</option>
+        <option>MP4 - 480p</option>
+        <option>MP3 - Audio</option>
+      </select>
+    </div>
+
+    <div class="notice">
+      ※ このページはサイバーセキュリティ研修用の疑似サイトです。
+      実際の動画変換サービスではありません。
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Usotube Converter — Security Awareness Training
+  </footer>
+</main>
+
+<script>
+document.getElementById("convert").addEventListener("click", function () {
+  const url = document.getElementById("url").value.trim();
+
+
+  // 研修用：実際の変換は行わず、同じフォルダに置いた
+  // ClickFix体験用HTMLへ遷移します。
+  window.location.href = "link/Clickfix-demo-macOS.html";
+});
+</script>
+
+</body>
+</html>
